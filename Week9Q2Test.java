@@ -1,5 +1,6 @@
 package Week9;
 
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
 import static java.lang.Character.isLetterOrDigit;
@@ -9,56 +10,59 @@ class Week9Q2Test
 {
     RandomCharacter r = new RandomCharacter();
 
-    @Test
+    @RepeatedTest(15)
     void getRandomLowerCaseLetter()
     {
-        char letter = r.getRandomLowerCaseLetter();
-        assertTrue(isLetterOrDigit(r.getRandomLowerCaseLetter()));
-        boolean bool1 = Character.isLetterOrDigit(letter);
-        System.out.println(letter + " is a letter/digit ? " + bool1);
+        char t = r.getRandomLowerCaseLetter();
+        System.out.println("Random lower case letter: " + t);
+        assertTrue(isLetterOrDigit(t));
     }
 
-    @Test
+    @RepeatedTest(15)
     void getRandomUpperCaseLetter()
     {
-        char letter = r.getRandomUpperCaseLetter();
-        assertTrue(isLetterOrDigit(r.getRandomUpperCaseLetter()));
-        boolean bool1 = Character.isLetterOrDigit(letter);
-        System.out.println(letter + " is a letter/digit ? " + bool1);
+        char t = r.getRandomUpperCaseLetter();
+        System.out.println("Random upper case letter: " + t);
+        assertTrue(isLetterOrDigit(t));
     }
 
-    @Test
+    @RepeatedTest(15)
     void getRandomDigitCharacter()
     {
         int value = r.getRandomDigitCharacter();
+        System.out.println("Random digit character: " + value);
         assertTrue(isPrime(value));
     }
 
-    @Test
+    @RepeatedTest(15)
     void getRandomCharacter()
     {
-        char letter = r.getRandomCharacter();
-        assertTrue(isLetterOrDigit(r.getRandomCharacter()));
-        boolean bool1 = Character.isLetterOrDigit(letter);
-        System.out.println(letter + " is a letter/digit ? " + bool1);
+        char t = r.getRandomCharacter();
+        System.out.println("Random character: " + t);
+        assertTrue(isLetterOrDigit(t));
     }
 
     public boolean isPrime(int num)
     {
-        if (num<=1)
+        if (num==1)
         {
-            System.out.println("Number is not prime");
+            System.out.println(num + " is a prime");
+            return true;
+        }
+        else if (num <= 0)
+        {
+            System.out.println(num + " is not a prime");
             return false;
         }
         for(int i=2;i<num;i++)
         {
             if (num%i==0)
             {
-                System.out.println("Number is not prime");
+                System.out.println(num + " is not a prime");
                 return false;
             }
         }
-        System.out.println("Number is prime");
+        System.out.println(num + " is a prime");
         return true;
     }
 }
